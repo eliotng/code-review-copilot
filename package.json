@@ -1,0 +1,53 @@
+{
+  "name": "code-review-copilot",
+  "displayName": "Code Review Copilot",
+  "description": "GitHub Copilot Chat extension for reviewing code changes between dates",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "extensionDependencies": ["GitHub.copilot-chat"],
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "code-review-copilot.reviewer",
+        "name": "reviewer",
+        "description": "Review code changes between two dates",
+        "isSticky": false
+      }
+    ],
+    "commands": [
+      {
+        "command": "code-review-copilot.reviewChanges",
+        "title": "Review Code Changes"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  },
+  "dependencies": {
+    "simple-git": "^3.21.0"
+  }
+}
